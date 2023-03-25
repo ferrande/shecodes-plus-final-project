@@ -1,0 +1,143 @@
+body {
+  background: #ffffff;
+  font-size: 24px;
+  font-family: "Open Sans", sans-serif;
+  color: #6c6c6c;
+}
+
+div.container {
+  width: 70%;
+  border: 3px solid #b1b1b1;
+  border-radius: 30px;
+  padding: 2em;
+  margin: 2em auto;
+  box-shadow: 0px 5px 10px 0px #d1d5db;
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.form {
+  position: relative;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 27%;
+  left: 15%;
+  color: #9ca3af;
+}
+
+button {
+  position: absolute;
+  top: 27%;
+  left: 15%;
+  background: none;
+  border: none;
+  padding: 12px;
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.left-pan {
+  padding-left: 7px;
+}
+
+.left-pan i {
+  padding-left: 10px;
+}
+
+.form-input {
+  font-size: 20px;
+  margin: 0 auto;
+  width: 80%;
+  height: 55px;
+  text-indent: 33px;
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+p.current-weather {
+  height: 90px;
+  margin: 0 auto;
+}
+
+img {
+  width: 3em;
+  margin: 0.5em 0;
+}
+
+img.current-weather-image {
+  position: relative;
+  top: -20px;
+  margin: 0.3em;
+}
+
+.current-weather-number {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.metric,
+.dot {
+  position: relative;
+  right: -0.3em;
+  top: -25px;
+  font-size: 24px;
+}
+
+.metric:hover {
+  font-size: 26px;
+  font-weight: 700;
+  background-color: #d7ecff;
+  border-radius: 12px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.metric-active {
+  font-size: 26px;
+  font-weight: 700;
+  background-color: #d7ecff;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.current-weather-text {
+  margin: 0 0 5em;
+}
+
+.five-day-forecast {
+  text-align: center;
+}
+
+.highest-temperature {
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #f0b400;
+}
