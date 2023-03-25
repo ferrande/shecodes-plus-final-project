@@ -29,7 +29,6 @@ const showCurrentCity = (response) => {
 
 const showCurrentTemp = (response) => {
     const currentTemp = document.querySelector("#weatherNumber");
-    Math.
     currentTemp.innerHTML = Math.round(response.data.main.temp);
 }
 
@@ -51,49 +50,3 @@ const getCurrentCity = async (event) => {
 
 let searchButton = document.querySelector("#searchButton");
 searchButton.addEventListener("click", getCurrentCity);
-
-
-// function showCurrentCity(response) {
-//     let currentCity = document.querySelector("#currentCity");
-//     currentCity.innerHTML = response.data.name
-// }
-
-// function getCurrentCity(event) {
-//     event.preventDefault();
-//     axios.get(apiUrl).then(showCurrentCity);
-// }
-
-// function changeCity(event) {
-//     event.preventDefault();
-//     let currentCity = document.querySelector("#currentCity");
-//     let input = document.querySelector("#input");
-//     currentCity.innerHTML = input.value;
-// }
-// let searchButton = document.querySelector("#searchButton");
-// searchButton.addEventListener("click", changeCity);
-
-
-
-
-
-
-
-
-// let celsiusSymbol = document.querySelector("span#celsius");
-// let celsius = document.querySelector("#celsius");
-// let fahrenheit = document.querySelector("#fahrenheit");
-// let number = document.querySelector("#weatherNumber");
-// function changeToCelsius() {
-//     number.innerHTML = 22;
-//     celsius.classList.add("metric-active")
-//     fahrenheit.classList.remove("metric-active")
-// }
-// celsiusSymbol.addEventListener("click", changeToCelsius);
-
-// let fahrenheitSymbol = document.querySelector("span#fahrenheit")
-// function changeToFahrenheit() {
-//     number.innerHTML = 22 * 2 + 30;
-//     celsius.classList.remove("metric-active")
-//     fahrenheit.classList.add("metric-active")
-// }
-// fahrenheitSymbol.addEventListener("click", changeToFahrenheit);
