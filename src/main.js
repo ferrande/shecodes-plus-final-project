@@ -1,11 +1,11 @@
 const initiateForm = () => {
     let now = new Date();
     let hours = now.getHours();
-    if (parseInt(hours) < 10) {
+    if (hours < 10) {
         hours = `0${hours}`
     }
     let minutes = now.getMinutes();
-    if (parseInt(minutes) < 10) {
+    if (minutes < 10) {
         minutes = `0${minutes}`
     }
     let days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
@@ -64,8 +64,32 @@ const getCurrentCity = async (event) => {
         showCurrentWind(response);
         showCurrentDay(response);
         showCurrentIcon(response);
+
+
+        let celsiusSymbol = document.querySelector("span#celsius");
+        let fahrenheitSymbol = document.querySelector("span#fahrenheit")
+        let celsius = document.querySelector("#celsius");
+        let fahrenheit = document.querySelector("#fahrenheit");
+        let temp = document.querySelector("#weatherNumber");
+
+        function changeToCelsius() {
+            temp.innerHTML = Math.round(response.data.main.temp);
+            celsius.classList.add("metric-active")
+            fahrenheit.classList.remove("metric-active")
+        }
+        celsiusSymbol.addEventListener("click", changeToCelsius);
+
+        function changeToFahrenheit() {
+            temp.innerHTML = Math.round((`${response.data.main.temp}` * 9) / 5 + 32);
+            celsius.classList.remove("metric-active")
+            fahrenheit.classList.add("metric-active")
+        }
+        fahrenheitSymbol.addEventListener("click", changeToFahrenheit);
+
     });
 }
 
 let searchButton = document.querySelector("#searchButton");
 searchButton.addEventListener("click", getCurrentCity);
+
+
