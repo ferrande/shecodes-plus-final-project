@@ -1,25 +1,16 @@
 const initiateForm = () => {
     let now = new Date();
-    now.getDate();
-
-    let weekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-    let weekDay = weekDays[now.getDay()];
-    let currentDay = document.querySelector("#currentDay");
-    currentDay.innerHTML = weekDay;
-
-    let currentHour = now.getHours();
-    let hour = document.querySelector("#currentHour");
-    if (parseInt(currentHour) < 10) {
-        currentHour = `0${currentHour}`
+    let hours = now.getHours();
+    if (parseInt(hours) < 10) {
+        hours = `0${hours}`
     }
-    hour.innerHTML = currentHour;
-
-    let currentMinutes = now.getMinutes();
-    let minutes = document.querySelector("#currentMinutes")
-    if (parseInt(currentMinutes) < 10) {
-        currentMinutes = `0${currentMinutes}`
+    let minutes = now.getMinutes();
+    if (parseInt(minutes) < 10) {
+        minutes = `0${minutes}`
     }
-    minutes.innerHTML = currentMinutes;
+    let days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+    let day = days[now.getDay()];
+    return `${day} ${hours}:${minutes}`;
 }
 
 const showCurrentCity = (response) => {
@@ -47,6 +38,11 @@ const showCurrentHumidity = (response) => {
     currentHumidity.innerHTML = response.data.main.humidity;
 }
 
+const showCurrentDay = (response) => {
+    const dateElement = document.querySelector("#currentDate")
+    dateElement.innerHTML = initiateForm(response.data.dt * 1000);
+}
+
 const getCurrentCity = async (event) => {
     event.preventDefault();
     initiateForm();
@@ -61,6 +57,7 @@ const getCurrentCity = async (event) => {
         showCurrentDescription(response);
         showCurrentHumidity(response);
         showCurrentWind(response);
+        showCurrentDay(response);
     });
 }
 
