@@ -43,12 +43,17 @@ const showCurrentDay = (response) => {
     dateElement.innerHTML = initiateForm(response.data.dt * 1000);
 }
 
+const showCurrentIcon = (response) => {
+    let icon = document.querySelector("#icon")
+    icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+    icon.setAttribute("alt", response.data.weather[0].description);
+}
+
 const getCurrentCity = async (event) => {
     event.preventDefault();
     initiateForm();
     let cityInput = document.getElementById("cityInput");
     let city = cityInput.value;
-
     let apiKey = "d73ccfe016529fb8f14963c6da96223c";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     await axios.get(apiUrl).then((response) => {
@@ -58,6 +63,7 @@ const getCurrentCity = async (event) => {
         showCurrentHumidity(response);
         showCurrentWind(response);
         showCurrentDay(response);
+        showCurrentIcon(response);
     });
 }
 
