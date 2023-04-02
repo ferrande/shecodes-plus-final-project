@@ -120,8 +120,13 @@ img.current-weather-image {
   padding: 4px;
 }
 
-.current-weather-text {
+.current-weather-description {
   margin: 0 0 5em;
+}
+
+li {
+  font-size: 0.9em;
+  list-style-type: none;
 }
 
 .five-day-forecast {

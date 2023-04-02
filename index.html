@@ -45,20 +45,32 @@
           >00</span
         >
       </h2>
+      <div class="modal-body row">
+        <div class="col-md-9">
+          <p class="current-weather">
+            <img
+              src="media/partly-cloudy.png"
+              alt="rainy"
+              class="current-weather-image"
+            />
+            <span id="weatherNumber" class="current-weather-number">22</span>
+            <span id="celsius" class="metric">ºC</span>
+            <span class="dot">・</span>
+            <span id="fahrenheit" class="metric">ºF</span>
+          </p>
+          <p id="currentWeatherDescription">partly cloudy</p>
+        </div>
+        <div class="col-md-3">
+          <p class="wind-humidity">
+            <ul>
+              <li>wind: <span id="wind"></span> km/h</li>
+              <li>humidity: <span id="humidity"></span>%</li>
+            </ul>
+          </p>
+        </div>
+      </div>
 
-      <p class="current-weather">
-        <img
-          src="media/partly-cloudy.png"
-          alt="rainy"
-          class="current-weather-image"
-        />
-        <span id="weatherNumber" class="current-weather-number">22</span>
-        <span id="celsius" class="metric">ºC</span>
-        <span class="dot">・</span>
-        <span id="fahrenheit" class="metric">ºF</span>
-      </p>
-      <p class="current-weather-text">partly cloudy</p>
-      <div class="row">
+      <!-- <div class="row">
         <p class="five-day-forecast col">
           fri<br /><img src="media/rainy.png" alt="rainy" /><br />21º
           <span class="highest-temperature">31º</span>
@@ -79,7 +91,7 @@
           tue<br /><img src="media/thunderstorm.png" alt="stormy" /><br />21º
           <span class="highest-temperature">30º</span>
         </p>
-      </div>
+      </div> -->
     </div>
     <footer>
       Icons created by

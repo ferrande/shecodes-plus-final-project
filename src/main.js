@@ -32,19 +32,35 @@ const showCurrentTemp = (response) => {
     currentTemp.innerHTML = Math.round(response.data.main.temp);
 }
 
+const showCurrentDescription = (response) => {
+    const currentDescription = document.querySelector("#currentWeatherDescription");
+    currentDescription.innerHTML = response.data.weather[0].description;
+}
+
+const showCurrentWind = (response) => {
+    const currentWind = document.querySelector("#wind");
+    currentWind.innerHTML = Math.round(response.data.wind.speed);
+}
+
+const showCurrentHumidity = (response) => {
+    const currentHumidity = document.querySelector("#humidity");
+    currentHumidity.innerHTML = response.data.main.humidity;
+}
+
 const getCurrentCity = async (event) => {
     event.preventDefault();
     initiateForm();
     let cityInput = document.getElementById("cityInput");
     let city = cityInput.value;
-    console.log("cityInput.value", cityInput.value);
+
     let apiKey = "d73ccfe016529fb8f14963c6da96223c";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     await axios.get(apiUrl).then((response) => {
-        showCurrentCity(response)
-        showCurrentTemp(response)
-        console.log(response.data)
-        return response.data
+        showCurrentCity(response);
+        showCurrentTemp(response);
+        showCurrentDescription(response);
+        showCurrentHumidity(response);
+        showCurrentWind(response);
     });
 }
 
