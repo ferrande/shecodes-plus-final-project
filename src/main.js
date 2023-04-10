@@ -49,12 +49,50 @@ const showCurrentIcon = (response) => {
     icon.setAttribute("alt", response.data.weather[0].description);
 }
 
+const formatDay = (timestamp) => {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
+    return days[day];
+}
+
+const showForecast = async (response) => {
+    console.log(response)
+    let forecastResponse = await getForecast(response.data.coord).data.daily;
+    console.log(forecastResponse)
+    let forecast = document.querySelector("#forecast");
+
+    let fiveDayForecast = `<div class="row">`;
+    forecastResponse.forEach(function (forecastDay, index) {
+        if (index < 5) {
+            fiveDayForecast +=
+                `
+            <p class="five-day-forecast col">
+            ${formatDay(forecastDay.dt)}<br /><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" /><br /><span class="lowest-temperature">${Math.round(forecastDay.temp.min)}º</span>
+            <span class="highest-temperature">${Math.round(forecastDay.temp.max)}º</span>
+          </p>`;
+        }
+    });
+
+    fiveDayForecast = fiveDayForecast + `</div>`;
+    forecast.innerHTML = fiveDayForecast;
+}
+
+const getForecast = async (coordinates) => {
+    console.log(coordinates);
+    const apiKey = "be60748992fab0f5da8162563fb21245";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(showForecast);
+};
+
 const getCurrentCity = async (event) => {
     event.preventDefault();
     initiateForm();
     let cityInput = document.getElementById("cityInput");
     let city = cityInput.value;
-    let apiKey = "d73ccfe016529fb8f14963c6da96223c";
+    const apiKey = "d73ccfe016529fb8f14963c6da96223c";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     await axios.get(apiUrl).then((response) => {
         showCurrentCity(response);
@@ -64,7 +102,7 @@ const getCurrentCity = async (event) => {
         showCurrentWind(response);
         showCurrentDay(response);
         showCurrentIcon(response);
-
+        showForecast(response);
 
         let celsiusSymbol = document.querySelector("span#celsius");
         let fahrenheitSymbol = document.querySelector("span#fahrenheit")
@@ -85,8 +123,8 @@ const getCurrentCity = async (event) => {
             fahrenheit.classList.add("metric-active")
         }
         fahrenheitSymbol.addEventListener("click", changeToFahrenheit);
-
     });
+    getForecast(response.data.coord);
 }
 
 let searchButton = document.querySelector("#searchButton");
