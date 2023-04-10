@@ -124,7 +124,6 @@ const getCurrentCity = async (event) => {
         }
         fahrenheitSymbol.addEventListener("click", changeToFahrenheit);
     });
-
     getForecast(response.data.coord);
 }
 
