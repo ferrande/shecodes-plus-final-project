@@ -19,18 +19,14 @@ h1 {
   font-weight: 700;
 }
 
-.city-form {
-  position: relative;
-}
-
 .form {
   position: relative;
 }
 
 .form .fa-search {
   position: absolute;
-  top: 0.7em;
-  left: 2.6em;
+  top: 27%;
+  left: 15%;
   color: #9ca3af;
 }
 
@@ -108,14 +104,20 @@ img.current-weather-image {
 }
 
 .metric:hover {
+  font-size: 26px;
   font-weight: 700;
-  color: #f0b400;
+  background-color: #d7ecff;
+  border-radius: 12px;
+  padding: 4px;
   cursor: pointer;
 }
 
 .metric-active {
+  font-size: 26px;
   font-weight: 700;
-  color: #f0b400;
+  background-color: #d7ecff;
+  border-radius: 12px;
+  padding: 4px;
 }
 
 .current-weather-description {
@@ -123,13 +125,12 @@ img.current-weather-image {
 }
 
 li {
-  font-size: 0.9em;
+  font-size: 0.8em;
   list-style-type: none;
 }
 
 .five-day-forecast {
   text-align: center;
-  font-size: 1em;
 }
 
 .highest-temperature {
